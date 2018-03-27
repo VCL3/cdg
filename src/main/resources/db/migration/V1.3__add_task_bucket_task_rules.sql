@@ -1,0 +1,1 @@
+ALTER TABLE task_rules ADD COLUMN task_bucket varchar(30);

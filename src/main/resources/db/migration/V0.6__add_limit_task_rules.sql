@@ -1,0 +1,1 @@
+ALTER TABLE task_rules ADD COLUMN "limit" integer;

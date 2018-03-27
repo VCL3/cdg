@@ -1,0 +1,21 @@
+sources:
+  farfetch:
+    search_types: [refresh, search]
+    source_type: crawl
+    parallelism: 5
+    load_factor: 9
+    max_requests_per_batch: 100
+    max_records_per_sec: 9
+    is_proxy_required: false
+    domain: http://www.farfetch.com
+    connection_timeout: 20
+  totokaelo:
+    search_types: [refresh, search]
+    source_type: crawl
+    parallelism: 5
+    load_factor: 9
+    max_requests_per_batch: 100
+    max_records_per_sec: 9
+    is_proxy_required: false
+    domain: http://totokaelo.com
+    connection_timeout: 20

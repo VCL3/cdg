@@ -1,0 +1,86 @@
+{
+  "source":"farfetch",
+  "parser": {
+    "parserClass": "com.intrence.cdg.parser.FarfetchParser",
+    "rulesByUrlPattern": [
+      {
+        "urlPattern": [
+          ".*www.farfetch.com/shopping/men/.*"
+        ],
+        "rules": {
+          "name": "//h1[@class='biz-page-title embossed-text-white']|//h1[@class='biz-page-title embossed-text-white shortenough']"
+        }
+      }
+    ]
+  },
+  "crawler": {
+    "type": "crawl",
+    "seed_urls": [
+      "https://www.farfetch.com/shopping/men/dolce-gabbana-bee-print-shirt-item-11884754.aspx?storeid=9763&from=listing&tglmdl=1"
+    ],
+    "page_types": [
+      {
+        "pattern": [
+          ".*www.yelp.com/locations/countries/us$",
+          ".*www.yelp.com/locations/countries/us/states/[\\w]+$"
+        ],
+        "priority": 1,
+        "pageType": "seed"
+      },
+
+      {
+        "pattern": [
+          ".*www.yelp.com\\/(?!about|press|guidelines|opensearch|search|user_details|writeareview|find_friends|mail|talk|events|signup|rss|advertise)[\\w-]+$"
+        ],
+        "priority": 1,
+        "pageType": "city"
+      },
+      {
+        "pattern": [
+          ".*www.yelp.com/c/[\\w-]+/[\\w-]+$",
+          ".*www.yelp.com/search\\?cflt=\\w+(&|&amp;)find_loc=[\\w,\\+%]+(&|&amp;)start=\\d+$",
+          ".*www.yelp.com/search\\?cflt=\\w+(&|&amp;)start=\\d+(&|&amp;)find_loc=[\\w,\\+%]+$",
+          ".*www.yelp.com/search\\?find_loc=[\\w,\\+%]+(&|&amp;)cflt=\\w+(&|&amp;)start=\\d+$",
+          ".*www.yelp.com/search\\?find_loc=[\\w,\\+%]+(&|&amp;)start=\\d+(&|&amp;)cflt=\\w+$",
+          ".*www.yelp.com/search\\?start=\\d+(&|&amp;)find_loc=[\\w,\\+%]+(&|&amp;)cflt=\\w+$",
+          ".*www.yelp.com/search\\?start=\\d+(&|&amp;)cflt=\\w+(&|&amp;)find_loc=[\\w,\\+%]+$",
+          ".*www.yelp.com/search\\?cflt=\\w+(&|&amp;)find_loc=[\\w,\\+%]+$",
+          ".*www.yelp.com/search\\?find_loc=[\\w,\\+%]+(&|&amp;)cflt=\\w+$",
+          ".*www.yelp.com/search\\?find_loc=[\\w,\\+%]+$"
+        ],
+        "priority": 2,
+        "pageType": "category"
+      },
+      {
+        "pattern": [
+          ".*www.yelp.com/biz/[-\\w%\\+]+$"
+        ],
+        "priority": 3,
+        "pageType": "place"
+      },
+      {
+        "pattern": [
+          ".*www.yelp.com/biz/(.*?)\\?start=\\d+$"
+        ],
+        "priority": 4,
+        "pageType": "reviews"
+      }
+    ],
+    "graph": {
+      "seed": [
+        "seed",
+        "city"
+      ],
+      "city": [
+        "category"
+      ],
+      "category": [
+        "place",
+        "category"
+      ],
+      "place": [
+        "place"
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+all:
+  postgres:
+    pg_host: 127.0.0.12
+    pg_database: cdg_pg
+    pg_app_port: 5432
+    pg_app_user: cdg_dev
+    pg_app_pswd: cdg_dev
+    pg_dba_port: 5432
+    pg_dba_user: cdg_dev
+    pg_dba_pswd: cdg_dev
+  redis:
+    masterName: cdg-redis
+  use_proxy_service: false
+  pxproxy_host: hawk-prox.snc1
+  pxproxy_port: 5555
+  pxproxy_user: gsanka
+  pxproxy_pw: 8f3KQ4TM
+
+development:
+  postgres:
+    pg_host: 127.0.0.12
+    pg_database: cdg_pg
+    pg_app_port: 5432
+    pg_app_user: cdg_dev
+    pg_app_pswd: cdg_dev
+    pg_dba_port: 5432
+    pg_dba_user: cdg_dev
+    pg_dba_pswd: cdg_dev
+  redis:
+    sentinelPool: localhost:26379, localhost:26380, localhost:26381
+  use_proxy_service: false
+  pxproxy_host: hawk-pr.snc1
+  pxproxy_port: 5555
+  pxproxy_user: gsanka
+  pxproxy_pw: 8f3KQ4TM

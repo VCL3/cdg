@@ -1,0 +1,1 @@
+ALTER TABLE task_rules ADD COLUMN country varchar(30), ADD COLUMN auto_start boolean;

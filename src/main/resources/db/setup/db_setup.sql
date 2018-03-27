@@ -1,0 +1,6 @@
+DROP DATABASE IF EXISTS cdg_pg;
+CREATE DATABASE cdg_pg;
+\connect cdg_pg;
+CREATE USER cdg_dev WITH PASSWORD 'cdg_dev';
+GRANT ALL PRIVILEGES ON DATABASE cdg_pg to cdg_dev;
+ALTER ROLE cdg_dev SUPERUSER;

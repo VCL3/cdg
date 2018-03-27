@@ -1,0 +1,64 @@
+{
+  "source":"totokaelo",
+  "parser": {
+    "parserClass": "com.intrence.cdg.parser.TotokaeloParser",
+    "rulesByUrlPattern": [
+      {
+        "urlPattern": [
+          ".*totokaelo.com/mens/[-\\w%\\+]+$"
+        ],
+        "rules": {
+          "name": "//h1[@class='__product-name tk-h2']",
+          "description": "",
+          "designer": "//h2[@class='__designer-name tk-h1']",
+          "available_sizes": "",
+          "original_price": "//span[@class='__original-price']",
+          "current_price": "//span[@class='__current-price -sale']",
+          "image_link": ""
+        }
+      }
+    ]
+  },
+  "crawler": {
+    "type": "crawl",
+    "seed_urls": [
+      "http://totokaelo.com/mens"
+    ],
+    "page_types": [
+      {
+        "pattern": [
+          ".*totokaelo.com/mens"
+        ],
+        "priority": 1,
+        "pageType": "seed"
+      },
+      {
+        "pattern": [
+          ".*totokaelo.com/mens\\?p=\\d{1,3}$"
+        ],
+        "priority": 1,
+        "pageType": "page"
+      },
+      {
+        "pattern": [
+          ".*totokaelo.com/mens/[-\\w%\\+]+$"
+        ],
+        "priority": 2,
+        "pageType": "product"
+      }
+    ],
+    "graph": {
+      "seed": [
+        "seed",
+        "page"
+      ],
+      "page": [
+        "page",
+        "product"
+      ],
+      "product": [
+        "product"
+      ]
+    }
+  }
+}

@@ -1,0 +1,1 @@
+ALTER TABLE task_rules ADD COLUMN urls_fetched integer;

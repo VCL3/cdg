@@ -1,0 +1,1 @@
+ALTER TABLE task_runs RENAME COLUMN state TO status;
